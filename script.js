@@ -4,17 +4,20 @@ const workouts = {
         details: `
             <h3>Legs:</h3>
             <ul>
-                <li>Squats: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
-                <li>Lunges: 15, 12, 8, 4 (each leg, with drop set to 50% weight until failure on the last set of 4)</li>
-                <li>Romanian Deadlifts: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
+                <li>Dumbbell Squats: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
+                <li>Leg Raises: 15 reps</li>
             </ul>
             <h3>Abs:</h3>
             <ul>
-                <li>Leg Raises: 15 reps</li>
+                <li>Dumbbell Lunges: 15, 12, 8, 4 (each leg, with drop set to 50% weight until failure on the last set of 4)</li>
                 <li>Plank: Hold for 45 seconds</li>
-                <li>Bicycle Crunches: 15 reps each side</li>
             </ul>
             <h3>HIIT:</h3>
+            <ul>
+                <li>Dumbbell Romanian Deadlifts: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
+                <li>Bicycle Crunches: 15 reps each side</li>
+            </ul>
+            <h3>HIIT Session:</h3>
             <ul>
                 <li>Burpees: Perform 10 burpees, then rest for 30 seconds. Repeat for 10-15 minutes.</li>
             </ul>
@@ -26,13 +29,16 @@ const workouts = {
             <h3>Chest:</h3>
             <ul>
                 <li>Dumbbell Bench Press: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
-                <li>Dumbbell Flyes: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
-                <li>Push-Ups: 15, 12, 8, 4</li>
+                <li>Sit-Ups: 15 reps</li>
             </ul>
             <h3>Abs:</h3>
             <ul>
-                <li>Sit-Ups: 15 reps</li>
+                <li>Dumbbell Flyes: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
                 <li>Russian Twists: 15 reps each side</li>
+            </ul>
+            <h3>Abs:</h3>
+            <ul>
+                <li>Push-Ups: 15, 12, 8, 4</li>
                 <li>Leg Raises: 15 reps</li>
             </ul>
         `
@@ -43,13 +49,16 @@ const workouts = {
             <h3>Back:</h3>
             <ul>
                 <li>Dumbbell Bent Over Rows: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
-                <li>Dumbbell Deadlifts: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
-                <li>Dumbbell Pullovers: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
-            </ul>
-            <h3>Abs:</h3>
-            <ul>
                 <li>Crunches: 20 reps</li>
+            </ul>
+            <h3>Back:</h3>
+            <ul>
+                <li>Dumbbell Deadlifts: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
                 <li>Reverse Crunches: 15 reps</li>
+            </ul>
+            <h3>Back:</h3>
+            <ul>
+                <li>Dumbbell Pullovers: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
                 <li>Mountain Climbers: 15 reps each side</li>
             </ul>
         `
@@ -68,7 +77,7 @@ const workouts = {
                 <li>Front Raises: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
                 <li>Upright Rows: 15, 12, 8, 4 (with drop set to 50% weight until failure on the last set of 4)</li>
             </ul>
-            <h3>HIIT:</h3>
+            <h3>HIIT Session:</h3>
             <ul>
                 <li>Burpees: Perform 10 burpees, then rest for 30 seconds. Repeat for 10-15 minutes.</li>
             </ul>
@@ -100,13 +109,13 @@ const workouts = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const calendar = document.getElementById('calendar');
+    const calendars = [document.getElementById('calendar1'), document.getElementById('calendar2'), document.getElementById('calendar3')];
     const workoutContainer = document.getElementById('workoutContainer');
     const workoutTitle = document.getElementById('workoutTitle');
     const workoutDetails = document.getElementById('workoutDetails');
     const finishWorkoutButton = document.getElementById('finishWorkoutButton');
 
-    function createCalendar() {
+    function createCalendar(calendar) {
         for (let i = 1; i <= 28; i++) {
             const day = document.createElement('div');
             day.innerText = i;
@@ -129,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function finishWorkout() {
         const dayNumber = finishWorkoutButton.getAttribute('data-day');
-        const dayElement = Array.from(calendar.children).find(day => day.innerText === dayNumber);
+        const dayElement = Array.from(document.querySelectorAll('.calendar div')).find(day => day.innerText === dayNumber);
         if (dayElement) {
             dayElement.classList.add('completed');
             workoutContainer.style.display = 'none';
@@ -137,5 +146,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     finishWorkoutButton.addEventListener('click', finishWorkout);
-    createCalendar();
+    calendars.forEach(createCalendar);
 });
