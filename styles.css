@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.calendar div {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+}
+
+.calendar div.completed::after {
+    content: "✔";
+    color: green;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 20px;
+}
+
+.workout-container {
+    display: none;
+    text-align: center;
+}
+
+#finishWorkoutButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#finishWorkoutButton:hover {
+    background-color: #45a049;
+}
