@@ -149,9 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const workoutContainer = document.getElementById('workoutContainer');
     const workoutTitle = document.getElementById('workoutTitle');
     const workoutDetails = document.getElementById('workoutDetails');
-    const finishWorkoutButton = document.getElementById('finishWorkoutButton');
 
-    days.forEach((day, index) => {
+    days.forEach(day => {
         const dayElement = document.createElement('div');
         dayElement.innerText = day;
         dayElement.setAttribute('data-day', day);
@@ -166,23 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
             workoutTitle.innerText = workout.title;
             workoutDetails.innerHTML = workout.details;
             workoutContainer.style.display = 'block';
-            finishWorkoutButton.setAttribute('data-day', day);
         }
     }
-
-    finishWorkoutButton.addEventListener('click', () => {
-        const day = finishWorkoutButton.getAttribute('data-day');
-        const dayElement = Array.from(calendar.children).find(dayEl => dayEl.getAttribute('data-day') === day);
-        if (dayElement) {
-            dayElement.classList.add('completed');
-            workoutContainer.style.display = 'none';
-        }
-    });
 });
-
-function resetCalendar() {
-    const calendar = document.getElementById('calendar');
-    Array.from(calendar.children).forEach(dayElement => {
-        dayElement.classList.remove('completed');
-    });
-}
