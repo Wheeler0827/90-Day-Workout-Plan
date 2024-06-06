@@ -164,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const dayNumber = dayElement.getAttribute('data-day');
         const workout = workouts[`Day ${dayNumber}`];
         if (workout) {
-            console.log(`Showing workout for Day ${dayNumber}`);
             calendarObj.title.innerText = workout.title;
             calendarObj.details.innerHTML = workout.details;
             calendarObj.container.style.display = 'block';
@@ -178,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const dayNumber = button.getAttribute('data-day');
         const dayElement = Array.from(calendarObj.calendar.children).find(day => day.innerText === dayNumber);
         if (dayElement) {
-            console.log(`Finishing workout for Day ${dayNumber}`);
             dayElement.classList.add('completed');
             calendarObj.container.style.display = 'none';
         }
