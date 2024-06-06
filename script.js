@@ -109,42 +109,42 @@ const workouts = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const calendars = [document.getElementById('calendar1'), document.getElementById('calendar2'), document.getElementById('calendar3')];
-    const workoutContainer = document.getElementById('workoutContainer');
-    const workoutTitle = document.getElementById('workoutTitle');
-    const workoutDetails = document.getElementById('workoutDetails');
-    const finishWorkoutButton = document.getElementById('finishWorkoutButton');
+    const calendars = [
+        { calendar: document.getElementById('calendar1'), container: document.getElementById('workoutContainer1'), title: document.getElementById('workoutTitle1'), details: document.getElementById('workoutDetails1'), button: document.getElementById('finishWorkoutButton1') },
+        { calendar: document.getElementById('calendar2'), container: document.getElementById('workoutContainer2'), title: document.getElementById('workoutTitle2'), details: document.getElementById('workoutDetails2'), button: document.getElementById('finishWorkoutButton2') },
+        { calendar: document.getElementById('calendar3'), container: document.getElementById('workoutContainer3'), title: document.getElementById('workoutTitle3'), details: document.getElementById('workoutDetails3'), button: document.getElementById('finishWorkoutButton3') }
+    ];
 
-    function createCalendar(calendar) {
+    function createCalendar(calendarObj) {
         for (let i = 1; i <= 28; i++) {
             const day = document.createElement('div');
             day.innerText = i;
             day.setAttribute('data-day', (i - 1) % 7 + 1);
-            day.addEventListener('click', () => showWorkout(day));
-            calendar.appendChild(day);
+            day.addEventListener('click', () => showWorkout(day, calendarObj));
+            calendarObj.calendar.appendChild(day);
         }
     }
 
-    function showWorkout(dayElement) {
+    function showWorkout(dayElement, calendarObj) {
         const dayNumber = dayElement.getAttribute('data-day');
         const workout = workouts[`Day ${dayNumber}`];
         if (workout) {
-            workoutTitle.innerText = workout.title;
-            workoutDetails.innerHTML = workout.details;
-            workoutContainer.style.display = 'block';
-            finishWorkoutButton.setAttribute('data-day', dayElement.innerText);
+            calendarObj.title.innerText = workout.title;
+            calendarObj.details.innerHTML = workout.details;
+            calendarObj.container.style.display = 'block';
+            calendarObj.button.setAttribute('data-day', dayElement.innerText);
         }
     }
 
-    function finishWorkout() {
-        const dayNumber = finishWorkoutButton.getAttribute('data-day');
-        const dayElement = Array.from(document.querySelectorAll('.calendar div')).find(day => day.innerText === dayNumber);
+    function finishWorkout(calendarId) {
+        const calendarObj = calendars.find(c => c.calendar.id === calendarId);
+        const dayNumber = calendarObj.button.getAttribute('data-day');
+        const dayElement = Array.from(calendarObj.calendar.children).find(day => day.innerText === dayNumber);
         if (dayElement) {
             dayElement.classList.add('completed');
-            workoutContainer.style.display = 'none';
+            calendarObj.container.style.display = 'none';
         }
     }
 
-    finishWorkoutButton.addEventListener('click', finishWorkout);
     calendars.forEach(createCalendar);
 });
