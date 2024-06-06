@@ -171,9 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function finishWorkout(calendarId, buttonId) {
+    function finishWorkout(calendarId) {
         const calendarObj = calendars.find(c => c.calendar.id === calendarId);
-        const button = document.getElementById(buttonId);
+        const button = calendarObj.button;
         const dayNumber = button.getAttribute('data-day');
         const dayElement = Array.from(calendarObj.calendar.children).find(day => day.innerText === dayNumber);
         if (dayElement) {
