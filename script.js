@@ -1,5 +1,5 @@
 const workouts = {
-    "Monday": {
+    "Mon": {
         title: "Back and Abs",
         details: `
             <h3>Superset 1:</h3>
@@ -23,11 +23,11 @@ const workouts = {
             </ul>
         `
     },
-    "Tuesday": {
+    "Tue": {
         title: "Rest Day",
         details: `<p>Enjoy your rest day!</p>`
     },
-    "Wednesday": {
+    "Wed": {
         title: "Shoulders + HIIT",
         details: `
             <h3>Exercise 1:</h3>
@@ -56,7 +56,7 @@ const workouts = {
             </ul>
         `
     },
-    "Thursday": {
+    "Thu": {
         title: "Abs",
         details: `
             <h3>Superset 1:</h3>
@@ -80,7 +80,7 @@ const workouts = {
             </ul>
         `
     },
-    "Friday": {
+    "Fri": {
         title: "HIIT Session",
         details: `
             <h3>HIIT:</h3>
@@ -89,7 +89,7 @@ const workouts = {
             </ul>
         `
     },
-    "Saturday": {
+    "Sat": {
         title: "Legs and Abs + HIIT",
         details: `
             <h3>Superset 1:</h3>
@@ -117,7 +117,7 @@ const workouts = {
             </ul>
         `
     },
-    "Sunday": {
+    "Sun": {
         title: "Chest and Abs",
         details: `
             <h3>Superset 1:</h3>
@@ -144,7 +144,7 @@ const workouts = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const calendar = document.getElementById('calendar');
     const workoutContainer = document.getElementById('workoutContainer');
     const workoutTitle = document.getElementById('workoutTitle');
@@ -179,3 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function resetCalendar() {
+    const calendar = document.getElementById('calendar');
+    Array.from(calendar.children).forEach(dayElement => {
+        dayElement.classList.remove('completed');
+    });
+}
