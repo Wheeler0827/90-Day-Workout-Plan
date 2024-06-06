@@ -171,9 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function finishWorkout(calendarId) {
+    function finishWorkout(calendarId, buttonId) {
         const calendarObj = calendars.find(c => c.calendar.id === calendarId);
-        const dayNumber = calendarObj.button.getAttribute('data-day');
+        const button = document.getElementById(buttonId);
+        const dayNumber = button.getAttribute('data-day');
         const dayElement = Array.from(calendarObj.calendar.children).find(day => day.innerText === dayNumber);
         if (dayElement) {
             dayElement.classList.add('completed');
