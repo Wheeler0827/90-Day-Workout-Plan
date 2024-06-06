@@ -7,24 +7,37 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>90 Day Workout Challenge</h1>
+    </header>
     <div class="container">
         <div class="calendar-container">
             <h2>Month 1</h2>
             <div class="calendar" id="calendar1"></div>
+            <div class="workout-container" id="workoutContainer1">
+                <h3 id="workoutTitle1"></h3>
+                <div id="workoutDetails1"></div>
+                <button id="finishWorkoutButton1" onclick="finishWorkout('calendar1')">Finish Workout</button>
+            </div>
         </div>
         <div class="calendar-container">
             <h2>Month 2</h2>
             <div class="calendar" id="calendar2"></div>
+            <div class="workout-container" id="workoutContainer2">
+                <h3 id="workoutTitle2"></h3>
+                <div id="workoutDetails2"></div>
+                <button id="finishWorkoutButton2" onclick="finishWorkout('calendar2')">Finish Workout</button>
+            </div>
         </div>
         <div class="calendar-container">
             <h2>Month 3</h2>
             <div class="calendar" id="calendar3"></div>
+            <div class="workout-container" id="workoutContainer3">
+                <h3 id="workoutTitle3"></h3>
+                <div id="workoutDetails3"></div>
+                <button id="finishWorkoutButton3" onclick="finishWorkout('calendar3')">Finish Workout</button>
+            </div>
         </div>
-    </div>
-    <div class="workout-container" id="workoutContainer">
-        <h2 id="workoutTitle"></h2>
-        <div id="workoutDetails"></div>
-        <button id="finishWorkoutButton">Finish Workout</button>
     </div>
     <script src="script.js"></script>
 </body>
