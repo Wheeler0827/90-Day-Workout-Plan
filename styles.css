@@ -4,14 +4,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     margin: 0;
 }
 
-.calendar-container {
+.container {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar-container {
+    margin: 20px;
 }
 
 .calendar {
@@ -45,4 +48,12 @@ body {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#finishWorkoutButton:hover {
+    background-color: #45a049;
 }
